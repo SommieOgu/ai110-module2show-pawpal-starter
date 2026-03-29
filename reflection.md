@@ -5,12 +5,22 @@
 **a. Initial design**
 
 - Briefly describe your initial UML design.
+
+     My initial thoughts is that their would be a owner and pet with a has-relationship. I also assumed there would be a pet care task and schedule. where the task and their duration would dictate the schedule.
+
 - What classes did you include, and what responsibilities did you assign to each?
+
+ My initial thoughts is that their would be a owner class and pet class with a has-relationship. I also assumed there would be a pet care task and schedule class. The owner and pet class would be responsible for tracking names, which pet/which owner they belong to and what date they came in. In the owner class their would be a special attribute for time to pick up times. In the the other classes pet task and schedule they will have a shared attribute on durration and priority and they will point to each otehr and will have an is- a realationship with the pets. class task will include methods like shower wich will calulate the time it takes to wash a pet based on pet and owners needs
+
+
 
 **b. Design changes**
 
 - Did your design change during implementation?
+    Yes it did, way more than expected
+
 - If yes, describe at least one change and why you made it.
+    I intially was thinking of the four classes and a few attributes. However, after AI help was was able to add more attributes and way more methods to the classes that was proposed. 
 
 ---
 
