@@ -48,3 +48,22 @@ pip install -r requirements.txt
 - Support recurring daily and weekly tasks by automatically creating the next occurrence when a task is marked complete.
 - Filter tasks by pet or completion status to make task lists easier to inspect and schedule.
 - Detect lightweight conflicts for duplicate preferred or assigned start times and warn instead of crashing.
+
+### Testing PawPal+
+
+Run the full test suite with:
+
+```bash
+python -m pytest
+```
+
+The tests cover key scheduling behavior in `pawpal_system.py`:
+
+- recurrence logic for daily tasks when marking a task complete
+- sorting tasks by preferred start time and priority
+- conflict detection for duplicate preferred or scheduled start times
+- task filtering by pet and completion status
+
+Confidence level: 4/5 — the suite covers happy paths and important edge cases, but no test suite can guarantee 100% coverage.
+
+    

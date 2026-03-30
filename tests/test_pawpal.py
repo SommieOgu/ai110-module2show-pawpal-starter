@@ -33,6 +33,7 @@ def test_adding_task_increases_pet_task_count() -> None:
 
 
 def test_mark_complete_creates_next_daily_occurrence() -> None:
+    """Completing a daily task creates a new task for the next day."""
     task = Task(
         title="Feed",
         duration_minutes=10,
@@ -85,6 +86,7 @@ def test_owner_task_filters_by_pet_and_status() -> None:
 
 
 def test_sort_tasks_by_time_respects_preferred_start() -> None:
+    """Tasks should be ordered chronologically by preferred start time."""
     owner = Owner(name="Jordan", availability_start="08:00", availability_end="17:00")
     pet = Pet(name="Buddy", species="dog")
     owner.add_pet(pet)
@@ -112,6 +114,7 @@ def test_sort_tasks_by_time_respects_preferred_start() -> None:
 
 
 def test_detect_conflicts_for_same_preferred_start_time() -> None:
+    """Duplicate preferred start times should be detected as a conflict."""
     owner = Owner(name="Jordan", availability_start="08:00", availability_end="17:00")
     pet = Pet(name="Buddy", species="dog")
     owner.add_pet(pet)
