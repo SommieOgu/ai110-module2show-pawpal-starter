@@ -32,13 +32,17 @@
     In my scheduler considers all of those. Time is a big thing with wanting to get as many clients per day while considering priority of the pets and the preferences. I would also say add aother contraint which is number of workers. if we only have 2 people in the schedule need to be less packed.
 
 - How did you decide which constraints mattered most?
-     Time is a primary! No schedule can exceed daily available minutes. Next was priority, if time is limited, choose the most important tasks first. Owners preferences after, use them to favor owner/pet needs once time and priority are respected. Lastly, worker_count adjusts capacity. if you have more workers, you can schedule more tasks overall. if you have fewer workers, keep the plan less packed
+     Time is a primary! No schedule can exceed daily available minutes. Next was priority, if time is limited, choose the most important tasks first. Owners preferences after, use them to favor owner/pet needs once time and priority are respected. Lastly, worker_count adjusts capacity. if you have more workers, you can schedule more tasks overall. if you have fewer workers, keep the plan less packed. It prioritizes high-priority tasks first and fits as many of those tasks into the available minutes as possible. That means lower-priority tasks may be left unscheduled when time is limited. 
+
 
 
 **b. Tradeoffs**
 
 - Describe one tradeoff your scheduler makes.
+   One tradeoff the scheduler makes is prioritizing preferred start times and task priority first, then greedily filling available minutes, which can leave small unused gaps or leave lower-priority tasks unscheduled.
+
 - Why is that tradeoff reasonable for this scenario?
+    This tradeoff is very reasonable because in a pet care/shop scenario, it is more important to complete urgent or owner-preferred tasks than to force every task into the day. It keeps the schedule practical and predictable for a busy owner or limited staff.
 
 ---
 

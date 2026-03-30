@@ -41,3 +41,10 @@ pip install -r requirements.txt
 5. Add tests to verify key behaviors.
 6. Connect your logic to the Streamlit UI in `app.py`.
 7. Refine UML so it matches what you actually built.
+
+### Smarter Scheduling
+
+- Schedule tasks by preferred start time first, then by priority, so time-sensitive care is handled before less urgent work.
+- Support recurring daily and weekly tasks by automatically creating the next occurrence when a task is marked complete.
+- Filter tasks by pet or completion status to make task lists easier to inspect and schedule.
+- Detect lightweight conflicts for duplicate preferred or assigned start times and warn instead of crashing.
