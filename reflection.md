@@ -51,12 +51,18 @@
 **a. How you used AI**
 
 - How did you use AI tools during this project (for example: design brainstorming, debugging, refactoring)?
+    I used AI for parts of this project: designing mermaid code, filling gaps in my brainstorming, turning phase 2 ideas into class code, debugging logic, and refining the Streamlit UI. It helped me understand each step and made it easier to translate my thoughts into working Python classes. I also used AI to explain sections of the code when I wanted to know why a particular approach worked or didn't work.
+
 - What kinds of prompts or questions were most helpful?
+     The most helpful prompts were action-oriented and included the relevant file names or code snippets. When I said exactly what I wanted to do and pointed to the file, the AI could focus on the task instead of guessing. Vague prompts were less productive, so I learned to keep requests specific and task-focused.
 
 **b. Judgment and verification**
 
 - Describe one moment where you did not accept an AI suggestion as-is.
+    In phase 2, the AI initially treated the owner as a worker on the schedule, which did not match the pet shop scenario. I did not accept that suggestion and instead added a separate randomized employee list for staffing. That change kept the owner and employee roles distinct and made the model more realistic.
+
 - How did you evaluate or verify what the AI suggested?
+     I evaluated suggestions by checking whether they matched the prompt, reading the actual code changes, and running the relevant behavior manually. I also used tests to verify that the new behavior worked correctly. For example, after a scheduling change, I checked that tasks were ordered by priority and time the way I expected in my phas 2 but order changed in phase 4, and I confirmed the code still passed the test cases.
 
 ---
 
@@ -65,12 +71,18 @@
 **a. What you tested**
 
 - What behaviors did you test?
+    I tested that completing a daily task marks it complete and creates the next occurrence, that tasks are sorted correctly by preferred start time and priority, and that duplicate preferred or scheduled start times are detected as conflicts. I also verified that task retrieval and filtering work by pet and completion status so the schedule only considers the right tasks.
+
 - Why were these tests important?
+    These tests validate the core scheduler logic: recurring tasks must continue automatically, time-sensitive work needs to be ordered correctly, and conflicting appointments should not silently pass through. That helps ensure the app produces a realistic daily plan instead of impossible or poorly ordered task lists.
 
 **b. Confidence**
 
 - How confident are you that your scheduler works correctly?
+    I am not that confident, maybe a 4 out of 5, because the test cases cover happy paths and important edge cases, but the demo still showed a lot of incomplete tasks with different priorities. The scheduler handles the basic behaviors I tested, yet the live demo suggests task ordering and completion handling can still be improved. I also feel testing can never be 100% complete, so it’s realistic to leave room for unknown cases. That’s why I keep the confidence level lower even though the core logic passed the tests.
+
 - What edge cases would you test next if you had more time?
+    Next I would test more edge cases around overloaded schedules, like when total task duration exceeds the available window. I’d also verify behavior with multiple workers, since a real shop should not rely on only one worker all day. Finally, I’d check how recurring tasks, due dates, and owner availability interact when tasks must be deferred or shifted.
 
 ---
 
@@ -79,11 +91,14 @@
 **a. What went well**
 
 - What part of this project are you most satisfied with?
+    I was most satisfied with seeing my original idea for four classes and their attributes come to life in working Python code. It felt good to turn the UML planning into real class and scheduler behavior. The design started on paper and then actually worked together in the app, which made the planning exercise feel worthwhile. That made the whole project feel more concrete and rewarding
 
 **b. What you would improve**
 
 - If you had another iteration, what would you improve or redesign?
+    I would spend more time on class brainstorming and refining the UML before coding. Right now the design feels a bit cluttered and some classes are doing too much, so I’d separate responsibilities more clearly. I’d also add more tests early, because better coverage would catch issues before they become messy. That would make the system cleaner and easier to extend.
 
 **c. Key takeaway**
 
 - What is one important thing you learned about designing systems or working with AI on this project?
+    I learned to always double-check the AI’s suggestions instead of accepting them blindly. The best prompts were action-oriented and included file names or code snippets, because that let the AI focus on the exact task. Vague requests were less productive, so being specific made the work much smoother.

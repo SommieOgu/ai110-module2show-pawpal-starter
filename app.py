@@ -8,6 +8,26 @@ if "owner" not in st.session_state:
 
 owner: Owner = st.session_state["owner"]
 
+
+def format_task_rows(tasks: list[Task]) -> list[dict[str, str | int | bool]]:
+    rows: list[dict[str, str | int | bool]] = []
+    for pet in owner.pets:
+        for task in pet.tasks:
+            if task in tasks:
+                rows.append(
+                    {
+                        "Pet": pet.name,
+                        "Title": task.title,
+                        "Duration": task.duration_minutes,
+                        "Priority": task.priority,
+                        "Preferred start": task.preferred_start_time or "N/A",
+                        "Scheduled start": task.scheduled_start_time or "TBD",
+                        "Due date": task.due_date.isoformat() if task.due_date else "N/A",
+                        "Completed": task.completed,
+                    }
+                )
+    return rows
+
 st.title("PawPal+")
 
 st.markdown(
@@ -88,8 +108,25 @@ else:
 st.divider()
 
 st.subheader("Build Schedule")
+planner = SchedulePlanner(owner=owner, available_minutes=480, employees=["Alex"])
+unscheduled_tasks = planner.retrieve_all_tasks(completed=False)
+
+if unscheduled_tasks:
+    st.markdown("### Upcoming Task Queue")
+    sorted_upcoming = planner.sort_tasks_by_time(unscheduled_tasks)
+    st.table(format_task_rows(sorted_upcoming))
+else:
+    st.info("No unscheduled tasks are available to schedule.")
+
 if st.button("Generate schedule"):
-    planner = SchedulePlanner(owner=owner, available_minutes=480, employees=["Alex"])
-    planner.generate_schedule()
+    scheduled = planner.generate_schedule()
     st.markdown("### Today's Schedule")
-    st.text(planner.explain_plan())
+    if scheduled:
+        st.success(planner.get_plan_summary())
+        if planner.conflicts:
+            for conflict in planner.conflicts:
+                st.warning(conflict)
+        st.table(format_task_rows(scheduled))
+        st.write(planner.explain_plan())
+    else:
+        st.warning("No tasks could be scheduled with the current constraints.")

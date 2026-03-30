@@ -66,4 +66,17 @@ The tests cover key scheduling behavior in `pawpal_system.py`:
 
 Confidence level: 4/5 — the suite covers happy paths and important edge cases, but no test suite can guarantee 100% coverage.
 
-    
+### Features
+
+Implemented scheduling and task management features include:
+
+- Sorting by time: tasks are ordered using preferred start time first, then by priority and duration.
+- Conflict warnings: the planner detects duplicate preferred or scheduled start times and reports issues instead of failing.
+- Daily recurrence: recurring tasks automatically generate the next occurrence when a task is marked complete.
+- Owner/pet task aggregation: tasks are retrieved and filtered across all pets owned by the same owner.
+- Task filtering: supports task queries by pet name and completion status.
+- Employee-aware capacity: available minutes are adjusted by the number of assigned employees to model workload capacity.
+
+
+### 📸 Demo
+ <a href="Demo_Streamlit.png" target = "_blank"><img src= 'Demo_Streamlit.png' title='PawPal App' width='' alt='PawPal App' class='center-block' /></a>
