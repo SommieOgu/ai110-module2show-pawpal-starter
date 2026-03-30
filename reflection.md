@@ -29,7 +29,11 @@
 **a. Constraints and priorities**
 
 - What constraints does your scheduler consider (for example: time, priority, preferences)?
+    In my scheduler considers all of those. Time is a big thing with wanting to get as many clients per day while considering priority of the pets and the preferences. I would also say add aother contraint which is number of workers. if we only have 2 people in the schedule need to be less packed.
+
 - How did you decide which constraints mattered most?
+     Time is a primary! No schedule can exceed daily available minutes. Next was priority, if time is limited, choose the most important tasks first. Owners preferences after, use them to favor owner/pet needs once time and priority are respected. Lastly, worker_count adjusts capacity. if you have more workers, you can schedule more tasks overall. if you have fewer workers, keep the plan less packed
+
 
 **b. Tradeoffs**
 
